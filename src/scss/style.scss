@@ -1,0 +1,12 @@
+$display-default:block;
+$color-point:#080;
+.test{
+  display:$display-default;
+  position:absolute;
+  left:5px;
+  color:$color-point;
+}
+
+body {
+  background-color: gray;
+}
