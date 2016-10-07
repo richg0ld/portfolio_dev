@@ -4,8 +4,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    // devtool: 'source-map',
-    entry: ['./src/index'],
+    entry: [
+
+        './src/app/main',
+        './src/app/controllers/ctrl',
+        './src/app/directives/drtv',
+        './src/app/services/svs'
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -18,14 +23,14 @@ module.exports = {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/template/main.html'
         }),
         new ExtractTextPlugin("style.css")
     ],
     module: {
         loaders: [{
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract("css!sass")
+            loader: ExtractTextPlugin.extract('css!sass')
         }]
     }
 };

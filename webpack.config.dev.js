@@ -7,7 +7,10 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
-        './src/index'
+        './src/app/main',
+        './src/app/controllers/ctrl',
+        './src/app/directives/drtv',
+        './src/app/services/svs'
     ],
     output: {
         path: path.join(__dirname, 'dist'),

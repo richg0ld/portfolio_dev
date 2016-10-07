@@ -1,10 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
+    devtool:'cheap-eval-source-map',
     entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/dev-server',
         './src/app/main',
         './src/app/controllers/ctrl',
         './src/app/directives/drtv',
@@ -15,21 +17,19 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        }),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './src/template/main.html'
-        }),
-        new ExtractTextPlugin("style.css")
+        })
     ],
     module: {
         loaders: [{
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('css!sass')
+            loaders: ['style', 'css', 'sass']
         }]
+    },
+    devServer: {
+        contentBase: './dist',
+        hot: true
     }
 };
