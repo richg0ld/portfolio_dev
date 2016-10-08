@@ -1,3 +1,6 @@
-/**
- * Created by Richg0ld on 2016. 10. 8..
- */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
