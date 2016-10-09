@@ -1,6 +1,7 @@
 import React from 'react';
 import WorksInfo from './WorksInfo';
 import WorksDetail from './WorksDetail';
+import update from 'react-addons-update';
 
 export default class Works extends React.Component {
     constructor(props){
@@ -27,21 +28,51 @@ export default class Works extends React.Component {
         };
 
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
-        this.HandleClickWorkTitle = this. HandleClickWorkTitle.bind(this);
+        this.handleClickWorkTitle = this. handleClickWorkTitle.bind(this);
+
+        this.handleCreateWork = this.handleCreateWork.bind(this);
+        this.handleRemoveWork = this.handleRemoveWork.bind(this);
+        this.handleEditWork = this.handleEditWork.bind(this);
     }
 
     handleChangeSearch(e) {
         this.setState({
             keyword: e.target.value
         });
-        console.log(e.target.value);
     }
 
-    HandleClickWorkTitle(key){
+    handleClickWorkTitle(key){
         this.setState({
            selectedKey: key
         });
-        console.log(key, "요거를 클릭했고만?")
+    }
+
+    handleCreateWork(work){
+        this.setState({
+            worksData: update(this.state.worksData, {
+                $push: [work]
+            })
+        })
+    }
+
+    handleRemoveWork(){
+        this.setState({
+            worksData: update(this.state.worksData, {
+                $splice: [[this.state.selectedKey, 1]]
+            }),
+            selectedKey: -1
+        })
+    }
+
+    handleEditWork(name, url){
+        this.setState({
+            worksData: update(this.state.worksData,{
+                [this.state.selectedKey]:{
+                    name: {$set: name},
+                    url: {$set: url},
+                }
+            })
+        })
     }
 
     render(){
@@ -54,7 +85,7 @@ export default class Works extends React.Component {
                 return <WorksInfo
                     work={work}
                     key={i}
-                    onClick={ () => this.HandleClickWorkTitle(i) }
+                    onClick={ () => this.handleClickWorkTitle(i) }
                 />
             });
         };
