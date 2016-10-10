@@ -1,6 +1,7 @@
 import React from 'react';
 import WorksInfo from './WorksInfo';
 import WorksDetail from './WorksDetail';
+import WorksCreate from './WorksCreate';
 import update from 'react-addons-update';
 
 export default class Works extends React.Component {
@@ -48,6 +49,7 @@ export default class Works extends React.Component {
     }
 
     handleCreateWork(work){
+
         this.setState({
             worksData: update(this.state.worksData, {
                 $push: [work]
@@ -104,7 +106,14 @@ export default class Works extends React.Component {
                     isSelected={this.state.selectedKey !== -1}
                     work={this.state.worksData[this.state.selectedKey]}
                 />
+                <WorksCreate
+                    onCreate={ this.handleCreateWork }
+                />
             </div>
         );
     }
 }
+
+Works.defaultProps = {
+
+};

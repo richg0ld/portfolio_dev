@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "node module install for portfolio project",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js"
@@ -28,5 +28,13 @@
   "dependencies": {
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richg0ld/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richg0ld/portfolio/issues"
+  },
+  "homepage": "https://github.com/richg0ld/portfolio#readme"
 }
