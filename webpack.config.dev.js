@@ -1,7 +1,11 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: [
+        './src/index.js',
+        'webpack-dev-server/client?http://0.0.0.0:4000',
+        'webpack/hot/only-dev-server'
+    ],
 
     output: {
         path: __dirname + '/public/',
@@ -21,9 +25,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 loaders: ['react-hot', 'babel?' + JSON.stringify({
-                    cacheDirectory: true,
-                    presets: ['es2015', 'react']
-                })],
+                        cacheDirectory: true,
+                        presets: ['es2015', 'stage-0', 'react']
+                    })
+                ],
                 exclude: /node_modules/,
             }
         ]

@@ -5,12 +5,19 @@ export default class WorksInfo extends React.Component {
         return (
             <div onClick={this.props.onClick}>
                 <h2>{this.props.work.name}</h2>
-                {/*<p><a href={this.props.work.url}>{this.props.work.url}</a></p>*/}
-                {/*<dl>*/}
-                    {/*<dt>작업기간</dt>*/}
-                    {/*<dd>{this.props.work.workingDate.start} ~ {this.props.work.workingDate.finish}</dd>*/}
-                {/*</dl>*/}
             </div>
         );
     }
 }
+
+WorksInfo.propTypes = {
+    work: React.PropTypes.object,
+    onClick: React.PropTypes.func
+};
+
+WorksInfo.defaultProps = {
+    work: {
+        name: ''
+    },
+    onClick: () => console.log("Not onClick")
+};

@@ -5,7 +5,9 @@ export default class WorksCreate extends React.Component {
         super(props);
         this.state = {
             name:'',
-            url:''
+            url:'',
+            startDate:0,
+            finishDate:0
         };
         this.handleChangeCreate = this.handleChangeCreate.bind(this);
         this.handleClickCreate = this.handleClickCreate.bind(this);
@@ -20,10 +22,11 @@ export default class WorksCreate extends React.Component {
     handleClickCreate() {
         const work = {
             name: this.state.name,
-            url: this.state.url
+            url: this.state.url,
+            startDate:this.state.startDate,
+            finishDate:this.state.finishDate
         };
         this.props.onCreate(work);
-
     }
 
     render(){
@@ -46,8 +49,23 @@ export default class WorksCreate extends React.Component {
                         onChange={this.handleChangeCreate}
                     />
                 </p>
+                <p>
+                    <input
+                        type="text"
+                        name="WorkDate"
+                        placeholder="시작날짜"
+                        value={this.state.startDate}
+                        onChange={this.handleChangeCreate}
+                    />
+                    <input
+                        type="text"
+                        name="finishDate"
+                        placeholder="끝날짜"
+                        value={this.state.finishDate}
+                        onChange={this.handleChangeCreate}
+                    />
+                </p>
                 <button onClick={this.handleClickCreate}>Create</button>
-
             </div>
         )
     }
@@ -55,8 +73,8 @@ export default class WorksCreate extends React.Component {
 
 WorksCreate.propTypes = {
     onCreate: React.PropTypes.func
-}
+};
 
 WorksCreate.defaultProps = {
     onCreate: () => console.error("Not onCreate")
-}
+};

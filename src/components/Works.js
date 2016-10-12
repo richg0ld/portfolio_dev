@@ -13,17 +13,14 @@ export default class Works extends React.Component {
             worksData:[{
                     name:"sk텔링크 홈페이지 접근성 개선",
                     url:"http://www.sktelink.com/",
-                    workingDate:{
-                        start:201504,
-                        finish:201504
-                    }
+                    startDate:201504,
+                    finishDate:201504
+
                 },{
                     name:"kt금호렌터카, 롯데렌터카로 리브랜딩",
                     url:"https://www.lotterentacar.net",
-                    workingDate:{
-                        start:201506,
-                        finish:201507
-                    }
+                    startDate:201506,
+                    finishDate:201507
                 }
             ]
         };
@@ -58,6 +55,10 @@ export default class Works extends React.Component {
     }
 
     handleRemoveWork(){
+        if(this.state.selectedKey < 0){
+            return;
+        }
+
         this.setState({
             worksData: update(this.state.worksData, {
                 $splice: [[this.state.selectedKey, 1]]
@@ -105,15 +106,12 @@ export default class Works extends React.Component {
                 <WorksDetail
                     isSelected={this.state.selectedKey !== -1}
                     work={this.state.worksData[this.state.selectedKey]}
+                    onRemove={this.handleRemoveWork}
                 />
                 <WorksCreate
-                    onCreate={ this.handleCreateWork }
+                    onCreate={this.handleCreateWork}
                 />
             </div>
         );
     }
 }
-
-Works.defaultProps = {
-
-};
