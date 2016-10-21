@@ -4,6 +4,7 @@ import WorksDetail from './WorksDetail';
 import WorksCreate from './WorksCreate';
 import update from 'react-addons-update';
 
+
 export default class Works extends React.Component {
     constructor(props){
         super(props);
@@ -16,7 +17,7 @@ export default class Works extends React.Component {
                 startDate: 201504,
                 finishDate: 201504
 
-            },{
+            }, {
                 name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
                 url: 'https://www.lotterentacar.net',
                 startDate: 201506,
@@ -112,6 +113,7 @@ export default class Works extends React.Component {
                 {/*<WorksCreate*/}
                     {/*onCreate={this.handleCreateWork}*/}
                 {/*/>*/}
+                <Button  onClick={ () => console.log("클릭") }/>
             </div>
         );
     }
