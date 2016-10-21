@@ -19,5 +19,5 @@ WorksInfo.defaultProps = {
     work: {
         name: ''
     },
-    onClick: () => console.log("Not onClick")
+    onClick: () => new Error('Not onClick')
 };

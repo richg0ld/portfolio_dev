@@ -46,7 +46,7 @@ export default class WorksDetail extends React.Component {
                     </p>
                 </div>
             </div>
-        )
+        );
     }
 }
 
@@ -64,5 +64,5 @@ WorksDetail.defaultProps = {
         finishDate:0
     },
     isSelected: false,
-    onRemove: () => console.error("Not onRemove")
+    onRemove: () => new Error('Not onRemove')
 };

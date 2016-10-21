@@ -67,7 +67,7 @@ export default class WorksCreate extends React.Component {
                 </p>
                 <button onClick={this.handleClickCreate}>Create</button>
             </div>
-        )
+        );
     }
 }
 
@@ -76,5 +76,5 @@ WorksCreate.propTypes = {
 };
 
 WorksCreate.defaultProps = {
-    onCreate: () => console.error("Not onCreate")
+    onCreate: () => new Error('Not onCreate')
 };

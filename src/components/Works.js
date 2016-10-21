@@ -11,18 +11,17 @@ export default class Works extends React.Component {
             selectedKey: -1,
             keyword:'',
             worksData:[{
-                    name:"sk텔링크 홈페이지 접근성 개선",
-                    url:"http://www.sktelink.com/",
-                    startDate:201504,
-                    finishDate:201504
+                name: 'sk텔링크 홈페이지 접근성 개선',
+                url: 'http://www.sktelink.com/',
+                startDate: 201504,
+                finishDate: 201504
 
-                },{
-                    name:"kt금호렌터카, 롯데렌터카로 리브랜딩",
-                    url:"https://www.lotterentacar.net",
-                    startDate:201506,
-                    finishDate:201507
-                }
-            ]
+            },{
+                name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+                url: 'https://www.lotterentacar.net',
+                startDate: 201506,
+                finishDate: 201507
+            }]
         };
 
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
@@ -41,7 +40,7 @@ export default class Works extends React.Component {
 
     handleClickWorkTitle(key){
         this.setState({
-           selectedKey: key
+            selectedKey: key
         });
     }
 
@@ -51,7 +50,7 @@ export default class Works extends React.Component {
             worksData: update(this.state.worksData, {
                 $push: [work]
             })
-        })
+        });
     }
 
     handleRemoveWork(){
@@ -64,7 +63,7 @@ export default class Works extends React.Component {
                 $splice: [[this.state.selectedKey, 1]]
             }),
             selectedKey: -1
-        })
+        });
     }
 
     handleEditWork(name, url){
@@ -75,7 +74,7 @@ export default class Works extends React.Component {
                     url: {$set: url},
                 }
             })
-        })
+        });
     }
 
     render(){
@@ -85,11 +84,13 @@ export default class Works extends React.Component {
                 return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
             });
             return data.map((work, i) => {
-                return <WorksInfo
-                    work={work}
-                    key={i}
-                    onClick={ () => this.handleClickWorkTitle(i) }
-                />
+                return (
+                    <WorksInfo
+                        work={work}
+                        key={i}
+                        onClick={ () => this.handleClickWorkTitle(i) }
+                    />
+                );
             });
         };
         return (
@@ -108,9 +109,9 @@ export default class Works extends React.Component {
                     work={this.state.worksData[this.state.selectedKey]}
                     onRemove={this.handleRemoveWork}
                 />
-                <WorksCreate
-                    onCreate={this.handleCreateWork}
-                />
+                {/*<WorksCreate*/}
+                    {/*onCreate={this.handleCreateWork}*/}
+                {/*/>*/}
             </div>
         );
     }
