@@ -51,7 +51,7 @@ module.exports = {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
+            template: './src/index.html'
         }),
         new ExtractTextPlugin("style.css")
     ]
