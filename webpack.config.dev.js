@@ -1,14 +1,15 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
-        './src/index.js',
         'webpack-dev-server/client?http://0.0.0.0:4000',
-        'webpack/hot/only-dev-server'
+        'webpack/hot/only-dev-server',
+        './src/index.js',
     ],
 
     output: {
-        path: __dirname + '/public/',
+        path: __dirname + '/dist/',
         filename: 'bundle.js'
     },
 
@@ -17,7 +18,7 @@ module.exports = {
         inline: true,
         host: '0.0.0.0',
         port: 4000,
-        contentBase: __dirname + '/public/',
+        contentBase: __dirname + '/dist/',
     },
 
     module: {
@@ -30,11 +31,23 @@ module.exports = {
                     })
                 ],
                 exclude: /node_modules/,
+            }, {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass']
+            }, {
+                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                loader: 'file',
+                query: {
+                    name: 'static/media/[name].[hash:8].[ext]'
+                }
             }
         ]
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        })
     ]
 };

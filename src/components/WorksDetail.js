@@ -1,5 +1,21 @@
 import React from 'react';
 
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+
+const styles = {
+    img: {
+        width: "auto",
+        height: "auto",
+        minWidth: 300,
+        minHeight:230
+    },
+    customContentStyle: {
+        width: '90%',
+        maxWidth: 'none'
+    }
+};
+
 export default class WorksDetail extends React.Component {
     constructor(props){
         super(props);
@@ -17,35 +33,47 @@ export default class WorksDetail extends React.Component {
         this.setState({
             isEdit: !this.state.isEdit
         });
-        console.log(this.state.isEdit);
     }
 
     render(){
-        const detail = (
-            <div>
-                <strong>{this.props.work.name}</strong>
-                <a href={this.props.work.url}>{this.props.work.url}</a>
-                <dl>
-                    <dt>작업기간</dt>
-                    <dd>{this.props.work.startDate} ~ {this.props.work.finishDate}</dd>
-                </dl>
-            </div>
-        );
 
-        const blank = (<div>Not</div>);
+        const actions = [
+            <FlatButton
+                label="Close"
+                primary={true}
+                onTouchTap={this.props.onClose}
+            />,
+            <FlatButton
+                label="Go to link"
+                primary={true}
+                href={this.props.work.url}
+                target="blank"
+            />
+        ];
 
         return (
-            <div>
-                <h2>WorksDetail</h2>
-                <div>
-                    {this.props.isSelected ? detail : blank}
-                    <p>
-                        <button onClick={this.handleToggleEdit}>Edit</button>
-                        <button onClick={this.props.onRemove}>Remove</button>
-                        <button> 버튼잼</button>
-                    </p>
+            <Dialog
+                title={this.props.work.name}
+                actions={actions}
+                modal={false}
+                contentStyle={styles.customContentStyle}
+                open={this.props.open}
+                onRequestClose={this.props.onClose}
+                bodyStyle={{overflow: 'scroll'}}
+            >
+                <div >
+                    <p><a href={this.props.work.url}>{this.props.work.url}</a></p>
+                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
+                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
+                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
+                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
+                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
+                    <dl>
+                        <dt>작업기간</dt>
+                        <dd>{this.props.work.startDate} ~ {this.props.work.finishDate}</dd>
+                    </dl>
                 </div>
-            </div>
+            </Dialog>
         );
     }
 }

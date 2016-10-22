@@ -1,28 +1,35 @@
 import React from 'react';
+
+import { GridList } from 'material-ui/GridList';
+
+import { worksData } from './worksData'
 import WorksInfo from './WorksInfo';
 import WorksDetail from './WorksDetail';
 import WorksCreate from './WorksCreate';
 import update from 'react-addons-update';
 
 
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: "100%",
+        height: "auto",
+        overflowY: 'auto',
+    },
+};
+
 export default class Works extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            open: false,
             selectedKey: -1,
             keyword:'',
-            worksData:[{
-                name: 'sk텔링크 홈페이지 접근성 개선',
-                url: 'http://www.sktelink.com/',
-                startDate: 201504,
-                finishDate: 201504
-
-            }, {
-                name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
-                url: 'https://www.lotterentacar.net',
-                startDate: 201506,
-                finishDate: 201507
-            }]
+            worksData: worksData
         };
 
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
@@ -31,6 +38,7 @@ export default class Works extends React.Component {
         this.handleCreateWork = this.handleCreateWork.bind(this);
         this.handleRemoveWork = this.handleRemoveWork.bind(this);
         this.handleEditWork = this.handleEditWork.bind(this);
+        this.handleCloseDetail =this.handleCloseDetail.bind(this);
     }
 
     handleChangeSearch(e) {
@@ -41,7 +49,14 @@ export default class Works extends React.Component {
 
     handleClickWorkTitle(key){
         this.setState({
+            open: true,
             selectedKey: key
+        });
+    }
+
+    handleCloseDetail(){
+        this.setState({
+            open: false
         });
     }
 
@@ -80,7 +95,6 @@ export default class Works extends React.Component {
 
     render(){
         const mapToComponents = data => {
-            data.sort();
             data = data.filter(work => {
                 return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
             });
@@ -96,24 +110,33 @@ export default class Works extends React.Component {
         };
         return (
             <div>
-                <h1>Works</h1>
-                <input
-                    type="text"
-                    name="keyword"
-                    placeholder="Search"
-                    value={this.state.keyword}
-                    onChange={this.handleChangeSearch}
-                />
-                <div>{mapToComponents(this.state.worksData)}</div>
+                {/*<input*/}
+                    {/*type="text"*/}
+                    {/*name="keyword"*/}
+                    {/*placeholder="Search"*/}
+                    {/*value={this.state.keyword}*/}
+                    {/*onChange={this.handleChangeSearch}*/}
+                {/*/>*/}
+                <div style={styles.root}>
+                    <GridList
+                        cols={3}
+                        cellHeight={230}
+                        padding={1}
+                        style={styles.gridList}
+                    >
+                        {mapToComponents(this.state.worksData)}
+                    </GridList>
+                </div>
                 <WorksDetail
                     isSelected={this.state.selectedKey !== -1}
                     work={this.state.worksData[this.state.selectedKey]}
+                    onClose={this.handleCloseDetail}
                     onRemove={this.handleRemoveWork}
+                    open={this.state.open}
                 />
                 {/*<WorksCreate*/}
                     {/*onCreate={this.handleCreateWork}*/}
                 {/*/>*/}
-                <Button  onClick={ () => console.log("클릭") }/>
             </div>
         );
     }

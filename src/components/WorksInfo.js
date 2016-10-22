@@ -1,11 +1,29 @@
 import React from 'react';
 
+import { GridTile } from 'material-ui/GridList';
+
+const styles = {
+    img: {
+        width: "100%",
+        height: "auto",
+        minWidth: 300,
+        minHeight:230
+    }
+};
+
 export default class WorksInfo extends React.Component {
+
     render() {
+
         return (
-            <div onClick={this.props.onClick}>
-                <h2>{this.props.work.name}</h2>
-            </div>
+            <GridTile
+                title={this.props.work.name}
+                subtitle={<span><b>{this.props.work.startDate+" - "+this.props.work.finishDate}</b></span>}
+                onClick={this.props.onClick}
+                style={{cursor:'pointer'}}
+            >
+                <img src={this.props.work.img} style={styles.img}/>
+            </GridTile>
         );
     }
 }

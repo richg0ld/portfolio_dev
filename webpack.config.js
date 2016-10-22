@@ -1,19 +1,19 @@
+var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
-
+    entry:[
+        './src/index.js',
+    ],
+    // output: {
+    //     path: __dirname + '/public/',
+    //     filename: 'bundle.js'
+    // },
     output: {
-        path: __dirname + '/public/',
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
-    },
-
-    devServer: {
-        hot: true,
-        inline: true,
-        host: '0.0.0.0',
-        port: 4000,
-        contentBase: __dirname + '/public/',
     },
 
     module: {
@@ -25,11 +25,34 @@ module.exports = {
                     presets: ['es2015', 'stage-0', 'react']
                 })],
                 exclude: /node_modules/,
+            },
+            // {
+            //     test: /\.scss$/,
+            //     loaders: ['style', 'css', 'sass']
+            // },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('css!sass')
+            }, {
+                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                loader: 'file',
+                query: {
+                    name: 'images/[name].[hash:8].[ext]'
+                }
             }
+
         ]
     },
-
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new HtmlWebpackPlugin({
+            template: './public/index.html'
+        }),
+        new ExtractTextPlugin("style.css")
     ]
 };
