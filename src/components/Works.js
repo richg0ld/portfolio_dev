@@ -103,7 +103,7 @@ export default class Works extends React.Component {
             //     return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
             // });
             data = data.filter(work => {
-                return this.props.selectedType === work.type || this.props.selectedType === 'A';
+                return work.type.indexOf(this.props.selectedType) > -1 || this.props.selectedType === 'A';
             });
             return data.map((work, i) => {
                 return (

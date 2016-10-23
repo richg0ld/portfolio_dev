@@ -7,12 +7,19 @@ const styles = {
     img: {
         width: "auto",
         height: "auto",
-        minWidth: 300,
-        minHeight:230
     },
     customContentStyle: {
         width: '90%',
         maxWidth: 'none'
+    },
+    info:{
+        marginTop:30,
+        fontSize:14
+    },
+    infoTerm:{
+        marginTop:15
+    },
+    infoDesc:{
     }
 };
 
@@ -62,15 +69,19 @@ export default class WorksDetail extends React.Component {
                 bodyStyle={{overflow: 'scroll'}}
             >
                 <div >
-                    <p><a href={this.props.work.url}>{this.props.work.url}</a></p>
-                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
-                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
-                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
-                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
-                    <p style={{textAlign:"center"}}><img src={this.props.work.img} style={styles.img}/></p>
-                    <dl>
-                        <dt>작업기간</dt>
-                        <dd>{this.props.work.startDate} ~ {this.props.work.finishDate}</dd>
+                    <p style={{textAlign:"center"}}>
+                        <img
+                            src={this.props.work.img || require('./../images/nara.gif')}
+                            style={styles.img}
+                        />
+                    </p>
+                    <dl style={styles.info}>
+                        <dt style={styles.infoTerm}>역할</dt>
+                        <dd style={styles.infoDesc}>{this.props.work.role}</dd>
+                        <dt style={styles.infoTerm}>내용</dt>
+                        <dd style={styles.infoDesc}>{this.props.work.desc}</dd>
+                        <dt style={styles.infoTerm}>작업기간</dt>
+                        <dd style={styles.infoDesc}>{this.props.work.startDate} ~ {this.props.work.finishDate}</dd>
                     </dl>
                 </div>
             </Dialog>

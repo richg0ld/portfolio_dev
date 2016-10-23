@@ -22,7 +22,7 @@ export default class WorksInfo extends React.Component {
                 onClick={this.props.onClick}
                 style={{cursor:'pointer'}}
             >
-                <img src={this.props.work.img} style={styles.img}/>
+                <img src={this.props.work.thumbImg || require('./../images/nara.gif')} style={styles.img}/>
             </GridTile>
         );
     }

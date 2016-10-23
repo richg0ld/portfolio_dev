@@ -66,8 +66,9 @@ class Header extends React.Component {
                         >
                             <MenuItem primaryText='All' value='A' />
                             <MenuItem primaryText='Website' value='W' />
-                            <MenuItem primaryText='Event' value='E' />
+                            <MenuItem primaryText='Promotion' value='P' />
                             <MenuItem primaryText='Mobile' value='M' />
+                            <MenuItem primaryText='Etc' value='E' />
                         </IconMenu>
                     }
                 />
