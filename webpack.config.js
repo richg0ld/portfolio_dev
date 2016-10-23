@@ -1,18 +1,13 @@
-var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry:[
         './src/index.js',
     ],
-    // output: {
-    //     path: __dirname + '/public/',
-    //     filename: 'bundle.js'
-    // },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: __dirname + '/dist/',
         filename: 'bundle.js'
     },
 
@@ -25,12 +20,7 @@ module.exports = {
                     presets: ['es2015', 'stage-0', 'react']
                 })],
                 exclude: /node_modules/,
-            },
-            // {
-            //     test: /\.scss$/,
-            //     loaders: ['style', 'css', 'sass']
-            // },
-            {
+            }, {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('css!sass')
             }, {
@@ -53,6 +43,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new ExtractTextPlugin("style.css")
+        new ExtractTextPlugin('style.css')
     ]
 };

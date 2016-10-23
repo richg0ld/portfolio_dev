@@ -10,6 +10,9 @@ import update from 'react-addons-update';
 
 
 const styles = {
+    works:{
+        paddingTop:64
+    },
     root: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -19,7 +22,7 @@ const styles = {
         width: "100%",
         height: "auto",
         overflowY: 'auto',
-    },
+    }
 };
 
 export default class Works extends React.Component {
@@ -95,8 +98,12 @@ export default class Works extends React.Component {
 
     render(){
         const mapToComponents = data => {
+            data.sort();
+            // data = data.filter(work => {
+            //     return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
+            // });
             data = data.filter(work => {
-                return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
+                return this.props.selectedType === work.type || this.props.selectedType === 'A';
             });
             return data.map((work, i) => {
                 return (
@@ -109,7 +116,7 @@ export default class Works extends React.Component {
             });
         };
         return (
-            <div>
+            <div style={styles.works}>
                 {/*<input*/}
                     {/*type="text"*/}
                     {/*name="keyword"*/}

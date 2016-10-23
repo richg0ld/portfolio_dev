@@ -9,12 +9,26 @@ import Works from './Works';
 
 
 class App extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            selectedType:'A'
+        };
+        this.changeSelectType = this.changeSelectType.bind(this);
+    }
+
+    changeSelectType(type){
+        this.setState({
+            selectedType:type
+        })
+    }
+
     render(){
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div>
-                    <Header />
-                    <Works />
+                    <Header changeSelectType={this.changeSelectType}/>
+                    <Works selectedType={this.state.selectedType}/>
                 </div>
             </MuiThemeProvider>
         );

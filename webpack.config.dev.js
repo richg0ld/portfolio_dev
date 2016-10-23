@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackBrowserPlugin = require('webpack-browser-plugin');
 
 module.exports = {
     entry: [
@@ -48,6 +49,10 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
+        }),
+        new WebpackBrowserPlugin({
+            port: 4000,
+            url: 'http://localhost'
         })
     ]
 };

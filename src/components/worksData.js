@@ -3,32 +3,72 @@ export const worksData =[{
         url: 'http://www.sktelink.com/',
     img: require('./../images/nara.gif'),
     startDate: 201504,
-    finishDate: 201504
+    finishDate: 201504,
+    type:"W"
 
 }, {
     name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
-        url: 'https://www.lotterentacar.net',
-        img: require('./../images/nara.gif'),
-        startDate: 201506,
-        finishDate: 201507
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"E"
 }, {
     name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
-        url: 'https://www.lotterentacar.net',
-        img: require('./../images/nara.gif'),
-        startDate: 201506,
-        finishDate: 201507
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"M"
 }, {
     name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
-        url: 'https://www.lotterentacar.net',
-        img: require('./../images/nara.gif'),
-        startDate: 201506,
-        finishDate: 201507
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"W"
 }, {
     name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
-        url: 'https://www.lotterentacar.net',
-        img: require('./../images/nara.gif'),
-        startDate: 201506,
-        finishDate: 201507
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"W"
+}, {
+    name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"W"
+}, {
+    name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"M"
+}, {
+    name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"W"
+}, {
+    name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"E"
+}, {
+    name: 'kt금호렌터카, 롯데렌터카로 리브랜딩',
+    url: 'https://www.lotterentacar.net',
+    img: require('./../images/nara.gif'),
+    startDate: 201506,
+    finishDate: 201507,
+    type:"E"
 }];
 
 // 작업 리스트 ::::::::::::::

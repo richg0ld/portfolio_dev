@@ -4,7 +4,7 @@
   "description": "node module install for portfolio project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js ",
     "build": "webpack --config webpack.config.js"
   },
   "author": "",
@@ -30,6 +30,7 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
+    "webpack-browser-plugin": "^1.0.12",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
