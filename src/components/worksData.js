@@ -1,8 +1,8 @@
 export const worksData =[{
     name: '엑스퍼트 컨설팅 웹사이트',
     url: 'http://www.exc.co.kr/',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/expert.jpg'),
+    thumbImg: require('./../images/thm_expert.jpg'),
     startDate: 201301,
     finishDate: 201503,
     type:"W",
@@ -12,7 +12,7 @@ export const worksData =[{
 }, {
     name: '뷰웍스 채용 사이트',
     url: 'http://recruit.vieworks.com',
-    img: require('./../images/nara.gif'),
+    img: require('./../images/thm_vieworks.jpg'),
     thumbImg: '',
     startDate: 201408,
     finishDate: 201509,
@@ -32,8 +32,8 @@ export const worksData =[{
 }, {
     name: '엑스퍼트 대부도 연수원',
     url: 'http://www.expertacademy.co.kr/',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: '',
+    thumbImg: require('./../images/expert_aca.jpg'),
     startDate: 201311,
     finishDate: 201401,
     type:"W",
