@@ -12,8 +12,8 @@ export const worksData =[{
 }, {
     name: '뷰웍스 채용 사이트',
     url: 'http://recruit.vieworks.com',
-    img: require('./../images/thm_vieworks.jpg'),
-    thumbImg: '',
+    img: require('./../images/vieworks.png'),
+    thumbImg: require('./../images/thm_vieworks.jpg'),
     startDate: 201408,
     finishDate: 201509,
     type:"W",
@@ -22,8 +22,8 @@ export const worksData =[{
 }, {
     name: '행복한휴일',
     url: 'http://www.happyholiday.co.kr/',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/happy_holiday.png'),
+    thumbImg: require('./../images/thm_happy_holiday.jpg'),
     startDate: 201404,
     finishDate: 201505,
     type:"W",
@@ -32,8 +32,8 @@ export const worksData =[{
 }, {
     name: '엑스퍼트 대부도 연수원',
     url: 'http://www.expertacademy.co.kr/',
-    img: '',
-    thumbImg: require('./../images/expert_aca.jpg'),
+    img: require('./../images/expert_aca.jpg'),
+    thumbImg: require('./../images/thm_expert_aca.jpg'),
     startDate: 201311,
     finishDate: 201401,
     type:"W",
@@ -42,8 +42,8 @@ export const worksData =[{
 }, {
     name: 'sk텔링크 WA인증마크 획득',
     url: 'http://www.sktelink.co.kr',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/sktelink.png'),
+    thumbImg: require('./../images/thm_sktelink.jpg'),
     startDate: 201504,
     finishDate: 201505,
     type:"WM",
@@ -52,8 +52,8 @@ export const worksData =[{
 }, {
     name: 'KT금호렌터카에서 롯데렌터카로 리브랜딩 작업',
     url: 'http://www.lotterentacar.net',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/lotterentcar.png'),
+    thumbImg: require('./../images/thm_lotterentcar.jpg'),
     startDate: 201506,
     finishDate: 201507,
     type:"WM",
@@ -62,8 +62,8 @@ export const worksData =[{
 }, {
     name: '한빛온 공식 웹사이트 리뉴얼 및 공통 GNB 리뉴얼',
     url: 'http://www.hanbiton.com/',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/hanbiton.png'),
+    thumbImg: require('./../images/thm_hanbiton.jpg'),
     startDate: 201604,
     finishDate: 201605,
     type:"W",
@@ -72,8 +72,8 @@ export const worksData =[{
 }, {
     name: '그라나도 에스파다 일리에 2차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/02/20160211xlwl/event.aspx',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/ge_tg1.png'),
+    thumbImg: require('./../images/thm_ge.png'),
     startDate: 201601,
     finishDate: 201602,
     type:"P",
@@ -82,8 +82,8 @@ export const worksData =[{
 }, {
     name: '그라나도 에스파다 오르덴 2차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/07/20160707dhfm/event.aspx',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/ge_tg2.png'),
+    thumbImg: require('./../images/thm_ge.png'),
     startDate: 201606,
     finishDate: 201607,
     type:"P",
@@ -92,8 +92,8 @@ export const worksData =[{
 }, {
     name: '그라나도 에스파다 오르덴 3차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/08/20160811dkfe/event.aspx',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/ge_tg3.png'),
+    thumbImg: require('./../images/thm_ge.png'),
     startDate: 201607,
     finishDate: 201608,
     type:"P",
@@ -127,10 +127,10 @@ export const worksData =[{
     startDate: 201605,
     finishDate: 201606,
     type:"E",
-    role:'Jquery, Javascript를 이용한 프론트 인터렉션 개발',
+    role:'Jquery, Javascript를 이용하여 개발',
     desc:'회사에서 사용할 슬라이드 라이브러리를 제작하였으며, 제이쿼리를 이용한 슬라이드 라이브러리 입니다. 제이쿼리를 이용하여 신입이나 초보들이 좀 더 쉽게 사용 가능하며 자연스럽게 하위 브라우저에서도 돌아갈 수 있게 되었습니다.'
 }, {
-    name: '세번째 중력 및 충돌 효과 작업',
+    name: '두번째 중력 및 충돌 효과 작업',
     url: 'http://richg0ld.github.io/study/gravity/index.html',
     img: require('./../images/nara.gif'),
     thumbImg: '',
@@ -140,7 +140,7 @@ export const worksData =[{
     role:'canvas, javascript 이용한 작업',
     desc:'첫번째와 두번쨰의 시항착오 후 다양한 자료들을 참고하여 보다 자연스러운 효과를 구현해 내었다.'
 }, {
-    name: '두번째 중력 및 충돌 효과 작업',
+    name: '첫번째 중력 및 충돌 효과 작업',
     url: 'http://richg0ld.github.io/study/collide/collide2.html',
     img: require('./../images/nara.gif'),
     thumbImg: '',
@@ -149,27 +149,30 @@ export const worksData =[{
     type:"E",
     role:'canvas, javascript를 이용한 프론트 인터렉션 개발',
     desc:'회사내에서 처음으로 canvas에 순수 자바스크립트를 사용하여 인트로 페이지의 애니메이션 제작 기존에 모듈화 하였던 티징 페이지 코드를 좀더 수정하여 기능과 선언의 분리를 좀더 명확하게 함 코드의 관리가 좀더 쉬워짐'
-}, {
-    name: '첫번째 중력 및 충돌 효과 작업',
-    url: 'http://richg0ld.github.io/study/objectInteraction/index.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
-    startDate: 201511,
-    finishDate: 201512,
-    type:"E",
-    role:'canvas, javascript를 이용한 작업',
-    desc:'중력에 대한 내용보다는 물체와 물체들의 충돌에 대한 작업을 '
-}, {
-    name: '홈페이지 리엑트 작업',
-    url: 'https://github.com/richg0ld/portfolio',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
-    startDate: 2016009,
-    finishDate: 201510,
-    type:"E",
-    role:'canvas, javascript를 이용한 프론트 인터렉션 개발',
-    desc:'회사내에서 처음으로 canvas에 순수 자바스크립트를 사용하여 인트로 페이지의 애니메이션 제작 기존에 모듈화 하였던 티징 페이지 코드를 좀더 수정하여 기능과 선언의 분리를 좀더 명확하게 함 코드의 관리가 좀더 쉬워짐'
-}];
+}
+// , {
+//     name: '첫번째 중력 및 충돌 효과 작업',
+//     url: 'http://richg0ld.github.io/study/objectInteraction/index.html',
+//     img: require('./../images/nara.gif'),
+//     thumbImg: '',
+//     startDate: 201511,
+//     finishDate: 201512,
+//     type:"E",
+//     role:'canvas, javascript를 이용한 작업',
+//     desc:'중력에 대한 내용보다는 물체와 물체들의 충돌에 대한 작업을 '
+// }
+//, {
+//     name: '홈페이지 리엑트 작업',
+//     url: 'https://github.com/richg0ld/portfolio',
+//     img: require('./../images/nara.gif'),
+//     thumbImg: '',
+//     startDate: 2016009,
+//     finishDate: 201510,
+//     type:"E",
+//     role:'canvas, javascript를 이용한 프론트 인터렉션 개발',
+//     desc:'회사내에서 처음으로 canvas에 순수 자바스크립트를 사용하여 인트로 페이지의 애니메이션 제작 기존에 모듈화 하였던 티징 페이지 코드를 좀더 수정하여 기능과 선언의 분리를 좀더 명확하게 함 코드의 관리가 좀더 쉬워짐'
+// }
+];
 
 
 // 작업 리스트 ::::::::::::::

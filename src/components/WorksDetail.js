@@ -5,8 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
     img: {
-        width: "auto",
-        height: "auto",
+        width: '100%',
+        minHeight: '200px'
     },
     customContentStyle: {
         width: '90%',

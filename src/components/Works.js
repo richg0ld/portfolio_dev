@@ -98,7 +98,6 @@ export default class Works extends React.Component {
 
     render(){
         const mapToComponents = data => {
-            data.sort();
             // data = data.filter(work => {
             //     return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
             // });
