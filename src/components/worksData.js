@@ -73,7 +73,7 @@ export const worksData =[{
     name: '그라나도 에스파다 일리에 2차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/02/20160211xlwl/event.aspx',
     img: require('./../images/ge_tg1.png'),
-    thumbImg: require('./../images/thm_ge.png'),
+    thumbImg: require('./../images/thm_ge.jpg'),
     startDate: 201601,
     finishDate: 201602,
     type:"P",
@@ -83,7 +83,7 @@ export const worksData =[{
     name: '그라나도 에스파다 오르덴 2차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/07/20160707dhfm/event.aspx',
     img: require('./../images/ge_tg2.png'),
-    thumbImg: require('./../images/thm_ge.png'),
+    thumbImg: require('./../images/thm_ge.jpg'),
     startDate: 201606,
     finishDate: 201607,
     type:"P",
@@ -93,7 +93,7 @@ export const worksData =[{
     name: '그라나도 에스파다 오르덴 3차 티저 페이지 제작',
     url: 'http://ge.hanbiton.com/event/2016/08/20160811dkfe/event.aspx',
     img: require('./../images/ge_tg3.png'),
-    thumbImg: require('./../images/thm_ge.png'),
+    thumbImg: require('./../images/thm_ge.jpg'),
     startDate: 201607,
     finishDate: 201608,
     type:"P",
@@ -102,8 +102,8 @@ export const worksData =[{
 }, {
     name: '자동차 구현(html,css3,javascript)',
     url: 'http://richg0ld.github.io/study/car/car.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/tayotayo.jpg'),
+    thumbImg: require('./../images/thm_tayotayo.jpg'),
     startDate: 201607,
     finishDate: 201608,
     type:"E",
@@ -112,8 +112,8 @@ export const worksData =[{
 }, {
     name: '게임 캐릭터 움직임 구현(canvas,javascript)',
     url: 'http://richg0ld.github.io/study/character2/char2.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/character.jpg'),
+    thumbImg: require('./../images/thm_character.jpg'),
     startDate: 201505,
     finishDate: 201506,
     type:"E",
@@ -122,8 +122,8 @@ export const worksData =[{
 }, {
     name: 'slider 라이브러리 제작',
     url: 'http://richg0ld.github.io/study/slider/slider.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/slider.jpg'),
+    thumbImg: require('./../images/thm_slider.jpg'),
     startDate: 201605,
     finishDate: 201606,
     type:"E",
@@ -132,8 +132,8 @@ export const worksData =[{
 }, {
     name: '두번째 중력 및 충돌 효과 작업',
     url: 'http://richg0ld.github.io/study/gravity/index.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/gravity2.jpg'),
+    thumbImg: require('./../images/thm_gravity2.jpg'),
     startDate: 201605,
     finishDate: 201606,
     type:"E",
@@ -142,8 +142,8 @@ export const worksData =[{
 }, {
     name: '첫번째 중력 및 충돌 효과 작업',
     url: 'http://richg0ld.github.io/study/collide/collide2.html',
-    img: require('./../images/nara.gif'),
-    thumbImg: '',
+    img: require('./../images/gravity.jpg'),
+    thumbImg: require('./../images/thm_gravity.jpg'),
     startDate: 201602,
     finishDate: 201603,
     type:"E",
@@ -174,12 +174,11 @@ export const worksData =[{
 // }
 ];
 
-
 // 작업 리스트 ::::::::::::::
 // 프로필 작업 ///완료
-// 팝업 내용 수정
-// 포폴용 이미지 정리
-// 푸터
+// 팝업 내용 수정 //완료
+// 포폴용 이미지 정리 //완료
+// 푸터 //보류
 // 우측상단 버튼 스크립트 작업 ///완료
 // css > sass 변경 ///완료
 // css loader 설정 ///완료
