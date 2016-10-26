@@ -36,7 +36,7 @@ class Header extends React.Component {
             <div>
                 <Drawer
                     docked={false}
-                    width={400}
+                    width={300}
                     open={this.props.open}
                     onRequestChange={this.props.toggleProfile}
                 >

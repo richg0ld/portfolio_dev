@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 const styles = {
     img: {
         width: '100%',
+        height:'auto',
         minHeight: '200px'
     },
     customContentStyle: {
@@ -66,9 +67,9 @@ export default class WorksDetail extends React.Component {
                 contentStyle={styles.customContentStyle}
                 open={this.props.open}
                 onRequestClose={this.props.onClose}
-                bodyStyle={{overflow: 'scroll'}}
+                autoScrollBodyContent={true}
             >
-                <div >
+                <div style={{minHeight:600}}>
                     <p style={{textAlign:"center"}}>
                         <img
                             src={this.props.work.img || require('./../images/nara.gif')}

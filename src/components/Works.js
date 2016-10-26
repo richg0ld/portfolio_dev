@@ -25,14 +25,33 @@ const styles = {
     }
 };
 
+const getCols = (()=>{
+    let cols;
+    return ()=>{
+        if(window.innerWidth > 1116){
+            cols = 5;
+        }else if(window.innerWidth > 912){
+            cols = 4;
+        }else if(window.innerWidth > 712){
+            cols = 3;
+        }else if(window.innerWidth > 412){
+            cols = 2;
+        }else{
+            cols = 1;
+        }
+        return cols;
+    }
+})();
+
 export default class Works extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             open: false,
             selectedKey: -1,
-            keyword:'',
-            worksData: worksData
+            keyword: '',
+            worksData: worksData.sort(),
+            cols: getCols()
         };
 
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
@@ -42,8 +61,15 @@ export default class Works extends React.Component {
         this.handleRemoveWork = this.handleRemoveWork.bind(this);
         this.handleEditWork = this.handleEditWork.bind(this);
         this.handleCloseDetail =this.handleCloseDetail.bind(this);
-    }
 
+    }
+    componentDidMount() {
+        window.addEventListener("resize", ()=>{
+            this.setState({
+                cols: getCols()
+            })
+        });
+    }
     handleChangeSearch(e) {
         this.setState({
             keyword: e.target.value
@@ -125,7 +151,7 @@ export default class Works extends React.Component {
                 {/*/>*/}
                 <div style={styles.root}>
                     <GridList
-                        cols={3}
+                        cols={this.state.cols}
                         cellHeight={230}
                         padding={1}
                         style={styles.gridList}
