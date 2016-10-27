@@ -136,20 +136,20 @@ export default class Works extends React.Component {
     }
 
     render(){
-        let filterData = [];
         const mapToComponents = data => {
             // data = data.filter(work => {
             //     return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
             // });
-            filterData = data.filter(work => {
+            data = data.filter((work, index)=> {
+                work.idx = index;
                 return work.type.indexOf(this.props.selectedType) > -1 || this.props.selectedType === 'A';
             });
-            return filterData.map((work, i) => {
+            return data.map((work, i) => {
                 return (
                     <WorksInfo
                         work={work}
                         key={i}
-                        onClick={ () => this.handleClickWorkTitle(i) }
+                        onClick={ () => this.handleClickWorkTitle(work.idx) }
                     />
                 );
             });
@@ -175,7 +175,7 @@ export default class Works extends React.Component {
                 </div>
                 <WorksDetail
                     isSelected={this.state.selectedKey !== -1}
-                    work={filterData[this.state.selectedKey]}
+                    work={this.state.worksData[this.state.selectedKey]}
                     onClose={this.handleCloseDetail}
                     onRemove={this.handleRemoveWork}
                     open={this.state.open}
