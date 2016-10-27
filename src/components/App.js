@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import Cached from 'material-ui/svg-icons/action/cached';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Header from './Header';
@@ -24,8 +24,7 @@ class App extends React.Component {
         super(props);
         this.state={
             selectedType:'A',
-            themeNum: 0,
-            themes:[lightBaseTheme, darkBaseTheme]
+            themeNum: true
         };
         this.changeSelectType = this.changeSelectType.bind(this);
         this.setThemeNum = this.setThemeNum.bind(this);
@@ -39,16 +38,16 @@ class App extends React.Component {
 
     setThemeNum(){
         this.setState({
-            themeNum:parseInt(Math.random()*2, 10)
+            themeNum: !this.state.themeNum
         });
     }
 
     render(){
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(this.state.themes[this.state.themeNum])}>
+            <MuiThemeProvider muiTheme={getMuiTheme(this.state.themeNum ? lightBaseTheme : darkBaseTheme)}>
                 <div>
-                    <FloatingActionButton onClick={this.setThemeNum} mini={true} style={styles.button}>
-                        <ContentAdd />
+                    <FloatingActionButton onClick={this.setThemeNum} style={styles.button}>
+                        <Cached />
                     </FloatingActionButton>
                     <Header changeSelectType={this.changeSelectType}/>
                     <Works selectedType={this.state.selectedType}/>
