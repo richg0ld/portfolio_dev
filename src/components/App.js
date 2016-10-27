@@ -7,7 +7,6 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-
 import Header from './Header';
 import Works from './Works';
 

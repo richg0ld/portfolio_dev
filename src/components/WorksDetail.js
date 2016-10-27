@@ -2,6 +2,7 @@ import React from 'react';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const styles = {
     img: {
@@ -28,11 +29,7 @@ export default class WorksDetail extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isEdit: false,
-            name: '',
-            url: '',
-            startDate:0,
-            finishDate:0
+            isEdit: false
         };
         this.handleToggleEdit = this.handleToggleEdit.bind(this);
     }
@@ -70,12 +67,16 @@ export default class WorksDetail extends React.Component {
                 autoScrollBodyContent={true}
             >
                 <div style={{minHeight:600}}>
-                    <p style={{textAlign:"center"}}>
+                    <div style={{textAlign:"center",position:'relative'}}>
+                        <div style={{position:'absolute',top:50,width:'100%'}}>
+                            <CircularProgress size={60} thickness={7} style={ this.props.work.imageLoaded ? {display:'none'} : {display:'inline-block'}}/>
+                        </div>
                         <img
                             src={this.props.work.img || require('./../images/nara.gif')}
                             style={styles.img}
+                            onLoad={this.props.onImageLoaded}
                         />
-                    </p>
+                    </div>
                     <dl style={styles.info}>
                         <dt style={styles.infoTerm}>역할</dt>
                         <dd style={styles.infoDesc}>{this.props.work.role}</dd>
@@ -93,7 +94,8 @@ export default class WorksDetail extends React.Component {
 WorksDetail.propTypes = {
     work: React.PropTypes.object,
     isSelected: React.PropTypes.bool,
-    onRemove: React.PropTypes.func
+    onRemove: React.PropTypes.func,
+    onImageLoaded: React.PropTypes.func
 };
 
 WorksDetail.defaultProps = {
@@ -104,5 +106,6 @@ WorksDetail.defaultProps = {
         finishDate:0
     },
     isSelected: false,
-    onRemove: () => new Error('Not onRemove')
+    onRemove: () => new Error('Not onRemove'),
+    onImageLoaded: () => new Error('Not onImageLoaded')
 };

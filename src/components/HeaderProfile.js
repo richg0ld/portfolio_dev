@@ -2,16 +2,13 @@ import React from 'react';
 
 import Drawer from 'material-ui/Drawer';
 import Avatar from 'material-ui/Avatar';
-import IconButton from 'material-ui/IconButton';
 
 const styles = {
     drawer:{
         display:'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height:'100%'
-        // textAlign:'center',
-        // paddingTop:150
+        padding:'30px 0'
     },
     info:{
         marginTop:30,
@@ -39,6 +36,7 @@ class Header extends React.Component {
                     width={300}
                     open={this.props.open}
                     onRequestChange={this.props.toggleProfile}
+                    style={{overflow:'scroll'}}
                 >
                     <div style={styles.drawer} >
                         <div style={{flex:1,textAlign:'center'}}>

@@ -54,6 +54,8 @@ export default class Works extends React.Component {
             cols: getCols()
         };
 
+
+
         this.handleChangeSearch = this.handleChangeSearch.bind(this);
         this.handleClickWorkTitle = this. handleClickWorkTitle.bind(this);
 
@@ -61,6 +63,7 @@ export default class Works extends React.Component {
         this.handleRemoveWork = this.handleRemoveWork.bind(this);
         this.handleEditWork = this.handleEditWork.bind(this);
         this.handleCloseDetail =this.handleCloseDetail.bind(this);
+        this.imageLoaded = this.imageLoaded.bind(this);
 
     }
     componentDidMount() {
@@ -122,6 +125,16 @@ export default class Works extends React.Component {
         });
     }
 
+    imageLoaded(){
+        this.setState({
+            worksData: update(this.state.worksData,{
+                [this.state.selectedKey]:{
+                    $merge: {imageLoaded: true}
+                }
+            })
+        });
+    }
+
     render(){
         const mapToComponents = data => {
             // data = data.filter(work => {
@@ -165,6 +178,7 @@ export default class Works extends React.Component {
                     onClose={this.handleCloseDetail}
                     onRemove={this.handleRemoveWork}
                     open={this.state.open}
+                    onImageLoaded={this.imageLoaded}
                 />
                 {/*<WorksCreate*/}
                     {/*onCreate={this.handleCreateWork}*/}
