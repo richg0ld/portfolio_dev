@@ -90,4 +90,12 @@ class Header extends React.Component {
     }
 }
 
+HeaderProfile.propTypes = {
+    changeSelectType: React.PropTypes.func
+};
+
+HeaderProfile.defaultProps = {
+    changeSelectType: () => console.error('Not changeSelectType')
+};
+
 export default Header;

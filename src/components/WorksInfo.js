@@ -35,7 +35,10 @@ WorksInfo.propTypes = {
 
 WorksInfo.defaultProps = {
     work: {
-        name: ''
+        name: '',
+        startDate: 0,
+        finishDate: 0,
+        thumbImg: require('./../images/nara2.png')
     },
-    onClick: () => new Error('Not onClick')
+    onClick: () => console.error('Not onClick')
 };

@@ -76,5 +76,5 @@ WorksCreate.propTypes = {
 };
 
 WorksCreate.defaultProps = {
-    onCreate: () => new Error('Not onCreate')
+    onCreate: () => console.error('Not onCreate')
 };

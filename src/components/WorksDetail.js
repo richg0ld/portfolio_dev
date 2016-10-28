@@ -8,7 +8,8 @@ const styles = {
     img: {
         width: '100%',
         height:'auto',
-        minHeight: '200px'
+        minHeight: '200px',
+        cursor:'pointer'
     },
     customContentStyle: {
         width: '90%',
@@ -75,6 +76,7 @@ export default class WorksDetail extends React.Component {
                             src={this.props.work.img || require('./../images/nara.gif')}
                             style={styles.img}
                             onLoad={this.props.onImageLoaded}
+                            onClick={ () => window.open(this.props.work.url) }
                         />
                     </div>
                     <dl style={styles.info}>
@@ -93,9 +95,7 @@ export default class WorksDetail extends React.Component {
 
 WorksDetail.propTypes = {
     work: React.PropTypes.object,
-    isSelected: React.PropTypes.bool,
-    onRemove: React.PropTypes.func,
-    onImageLoaded: React.PropTypes.func
+    isSelected: React.PropTypes.bool
 };
 
 WorksDetail.defaultProps = {
@@ -106,6 +106,4 @@ WorksDetail.defaultProps = {
         finishDate:0
     },
     isSelected: false,
-    onRemove: () => new Error('Not onRemove'),
-    onImageLoaded: () => new Error('Not onImageLoaded')
 };

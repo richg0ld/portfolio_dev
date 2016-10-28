@@ -43,7 +43,7 @@ const getCols = (()=>{
     }
 })();
 
-export default class Works extends React.Component {
+class Works extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -188,3 +188,13 @@ export default class Works extends React.Component {
         );
     }
 }
+
+WorksInfo.propTypes = {
+    selectedType: React.PropTypes.string
+};
+
+WorksInfo.defaultProps = {
+    selectedType: 'A'
+};
+
+export default Works;

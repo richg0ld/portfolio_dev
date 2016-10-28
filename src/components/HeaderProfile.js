@@ -22,7 +22,7 @@ const styles = {
     }
 };
 
-class Header extends React.Component {
+class HeaderProfile extends React.Component {
 
     constructor(props) {
         super(props);
@@ -71,4 +71,14 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+HeaderProfile.propTypes = {
+    open: React.PropTypes.bool,
+    toggleProfile: React.PropTypes.func
+};
+
+HeaderProfile.defaultProps = {
+    work: false,
+    toggleProfile: () => console.error('Not toggleProfile')
+};
+
+export default HeaderProfile;
