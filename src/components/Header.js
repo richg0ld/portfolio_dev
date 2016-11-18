@@ -1,6 +1,8 @@
 import React from 'react';
 
-import AutoComplete from 'material-ui/AutoComplete';
+import { connect } from 'react-redux';
+import { selectType } from '../actions';
+
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -73,14 +75,6 @@ class Header extends React.Component {
                     }
                 />
 
-                {/*<AutoComplete*/}
-                    {/*hintText="입력"*/}
-                    {/*dataSource={this.state.keyword}*/}
-                    {/*onChange={this.handleChangeSearch}*/}
-                    {/*floatingLabelText="프로젝트명을 검색하세요"*/}
-                    {/*fullWidth={true}*/}
-                {/*/>*/}
-
                 <HeaderProfile
                     open={this.state.profileOpen}
                     toggleProfile={this.toggleProfile}
@@ -97,5 +91,13 @@ HeaderProfile.propTypes = {
 HeaderProfile.defaultProps = {
     changeSelectType: () => console.error('Not changeSelectType')
 };
+
+let mapDispatchToProps = dispatch => {
+    return {
+        changeSelectType: type => dispatch(selectType(type))
+    }
+};
+
+Header = connect(null, mapDispatchToProps)(Header);
 
 export default Header;

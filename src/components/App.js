@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { changeTheme } from '../actions';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -21,40 +24,36 @@ const styles = {
 
 class App extends React.Component {
     constructor(props){
-        super(props);
-        this.state={
-            selectedType:'A',
-            themeNum: true
-        };
-        this.changeSelectType = this.changeSelectType.bind(this);
-        this.setThemeNum = this.setThemeNum.bind(this);
+        super(props)
     }
-
-    changeSelectType(type){
-        this.setState({
-            selectedType:type
-        })
-    }
-
-    setThemeNum(){
-        this.setState({
-            themeNum: !this.state.themeNum
-        });
-    }
-
     render(){
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(this.state.themeNum ? lightBaseTheme : darkBaseTheme)}>
+            <MuiThemeProvider muiTheme={getMuiTheme(this.props.themeValue ? lightBaseTheme : darkBaseTheme)}>
                 <div>
-                    <FloatingActionButton onClick={this.setThemeNum} style={styles.button}>
+                    <div className="ㅋㅋㅋㅋ">{this.props.themeValue ? "true" : "false" }</div>
+                    <FloatingActionButton onClick={this.props.changeTheme} style={styles.button}>
                         <Cached />
                     </FloatingActionButton>
-                    <Header changeSelectType={this.changeSelectType}/>
-                    <Works selectedType={this.state.selectedType}/>
+                    <Header />
+                    <Works />
                 </div>
             </MuiThemeProvider>
         );
     }
 }
+
+let mapStateToProps = state => {
+    return {
+        themeValue: state.pageControl.themeValue
+    };
+};
+
+let mapDispatchToProps = dispatch => {
+    return {
+        changeTheme: () => dispatch(changeTheme())
+    }
+};
+
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

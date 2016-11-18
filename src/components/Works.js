@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import { GridList } from 'material-ui/GridList';
 
 import { worksData } from './worksData'
 import WorksInfo from './WorksInfo';
 import WorksDetail from './WorksDetail';
-import WorksCreate from './WorksCreate';
+// import WorksCreate from './WorksCreate';
 import update from 'react-addons-update';
 
 
@@ -54,9 +56,6 @@ class Works extends React.Component {
             cols: getCols()
         };
 
-
-
-        this.handleChangeSearch = this.handleChangeSearch.bind(this);
         this.handleClickWorkTitle = this. handleClickWorkTitle.bind(this);
 
         this.handleCreateWork = this.handleCreateWork.bind(this);
@@ -71,11 +70,6 @@ class Works extends React.Component {
             this.setState({
                 cols: getCols()
             })
-        });
-    }
-    handleChangeSearch(e) {
-        this.setState({
-            keyword: e.target.value
         });
     }
 
@@ -137,9 +131,6 @@ class Works extends React.Component {
 
     render(){
         const mapToComponents = data => {
-            // data = data.filter(work => {
-            //     return work.name.toLowerCase().indexOf(this.state.keyword) > -1;
-            // });
             data = data.filter((work, index)=> {
                 work.idx = index;
                 return work.type.indexOf(this.props.selectedType) > -1 || this.props.selectedType === 'A';
@@ -156,13 +147,6 @@ class Works extends React.Component {
         };
         return (
             <div style={styles.works}>
-                {/*<input*/}
-                    {/*type="text"*/}
-                    {/*name="keyword"*/}
-                    {/*placeholder="Search"*/}
-                    {/*value={this.state.keyword}*/}
-                    {/*onChange={this.handleChangeSearch}*/}
-                {/*/>*/}
                 <div style={styles.root}>
                     <GridList
                         cols={this.state.cols}
@@ -181,9 +165,6 @@ class Works extends React.Component {
                     open={this.state.open}
                     onImageLoaded={this.imageLoaded}
                 />
-                {/*<WorksCreate*/}
-                    {/*onCreate={this.handleCreateWork}*/}
-                {/*/>*/}
             </div>
         );
     }
@@ -196,5 +177,13 @@ WorksInfo.propTypes = {
 WorksInfo.defaultProps = {
     selectedType: 'A'
 };
+
+let mapStateToProps = state => {
+    return {
+        selectedType: state.pageControl.selectedType
+    };
+};
+
+Works = connect(mapStateToProps)(Works);
 
 export default Works;
