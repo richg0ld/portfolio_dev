@@ -22,7 +22,8 @@
 // }
 
 export const SELECT_TYPE = 'SELECT_TYPE';
-export const CHANGE_THEME = 'CHANGE_THEME';
+export const SELECT_WORK = 'SELECT_WORK';
+export const CLOSE_WORK = 'CLOSE_WORK';
 
 export function selectType(type) {
     return {
@@ -31,8 +32,18 @@ export function selectType(type) {
     };
 }
 
-export function changeTheme() {
+export function selectWork(key) {
+
     return {
-        type: CHANGE_THEME
-    }
+        type: SELECT_WORK,
+        open: true,
+        selectedKey: key
+    };
+}
+
+export function closeWork() {
+
+    return {
+        type: CLOSE_WORK
+    };
 }

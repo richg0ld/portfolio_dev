@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { selectWork } from '../actions';
+
 import { GridTile } from 'material-ui/GridList';
 
 const styles = {
@@ -11,15 +14,16 @@ const styles = {
     }
 };
 
-export default class WorksInfo extends React.Component {
+class WorksInfo extends React.Component {
 
     render() {
 
         return (
             <GridTile
+                key={this.props.key}
                 title={this.props.work.name}
                 subtitle={<span><b>{this.props.work.startDate+" - "+this.props.work.finishDate}</b></span>}
-                onClick={this.props.onClick}
+                onClick={()=> this.props.onClick(this.props.workIdx)}
                 style={{cursor:'pointer'}}
             >
                 <img src={this.props.work.thumbImg || require('./../images/nara.gif')} style={styles.img}/>
@@ -42,3 +46,14 @@ WorksInfo.defaultProps = {
     },
     onClick: () => console.error('Not onClick')
 };
+
+
+let mapDispatchToProps = dispatch => {
+    return {
+        onClick: key => dispatch(selectWork(key))
+    }
+};
+
+WorksInfo = connect(null, mapDispatchToProps)(WorksInfo);
+
+export default WorksInfo;

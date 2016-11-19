@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { closeWork } from '../actions';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -26,28 +29,14 @@ const styles = {
     }
 };
 
-export default class WorksDetail extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isEdit: false
-        };
-        this.handleToggleEdit = this.handleToggleEdit.bind(this);
-    }
-
-    handleToggleEdit(){
-        this.setState({
-            isEdit: !this.state.isEdit
-        });
-    }
-
+class WorksDetail extends React.Component {
     render(){
 
-        const actions = [
+        const actionsButton = [
             <FlatButton
                 label="Close"
                 primary={true}
-                onTouchTap={this.props.onClose}
+                onTouchTap={this.props.closeWork}
             />,
             <FlatButton
                 label="Go to link"
@@ -60,11 +49,11 @@ export default class WorksDetail extends React.Component {
         return (
             <Dialog
                 title={this.props.work.name}
-                actions={actions}
+                actions={actionsButton}
                 modal={false}
                 contentStyle={styles.customContentStyle}
                 open={this.props.open}
-                onRequestClose={this.props.onClose}
+                onRequestClose={this.props.closeWork}
                 autoScrollBodyContent={true}
             >
                 <div style={{minHeight:600}}>
@@ -107,3 +96,13 @@ WorksDetail.defaultProps = {
     },
     isSelected: false,
 };
+
+let mapDispatchToProps = dispatch => {
+    return {
+        closeWork: key => dispatch(closeWork())
+    }
+};
+
+WorksDetail = connect(null, mapDispatchToProps)(WorksDetail);
+
+export default WorksDetail;

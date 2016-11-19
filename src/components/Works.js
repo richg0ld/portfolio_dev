@@ -56,12 +56,8 @@ class Works extends React.Component {
             cols: getCols()
         };
 
-        this.handleClickWorkTitle = this. handleClickWorkTitle.bind(this);
-
         this.handleCreateWork = this.handleCreateWork.bind(this);
         this.handleRemoveWork = this.handleRemoveWork.bind(this);
-        this.handleEditWork = this.handleEditWork.bind(this);
-        this.handleCloseDetail =this.handleCloseDetail.bind(this);
         this.imageLoaded = this.imageLoaded.bind(this);
 
     }
@@ -73,56 +69,10 @@ class Works extends React.Component {
         });
     }
 
-    handleClickWorkTitle(key){
-        this.setState({
-            open: true,
-            selectedKey: key
-        });
-    }
-
-    handleCloseDetail(){
-        this.setState({
-            open: false
-        });
-    }
-
-    handleCreateWork(work){
-
-        this.setState({
-            worksData: update(this.state.worksData, {
-                $push: [work]
-            })
-        });
-    }
-
-    handleRemoveWork(){
-        if(this.state.selectedKey < 0){
-            return;
-        }
-
-        this.setState({
-            worksData: update(this.state.worksData, {
-                $splice: [[this.state.selectedKey, 1]]
-            }),
-            selectedKey: -1
-        });
-    }
-
-    handleEditWork(name, url){
-        this.setState({
-            worksData: update(this.state.worksData,{
-                [this.state.selectedKey]:{
-                    name: {$set: name},
-                    url: {$set: url},
-                }
-            })
-        });
-    }
-
     imageLoaded(){
         this.setState({
             worksData: update(this.state.worksData,{
-                [this.state.selectedKey]:{
+                [this.props.selectedKey]:{
                     $merge: {imageLoaded: true}
                 }
             })
@@ -140,7 +90,7 @@ class Works extends React.Component {
                     <WorksInfo
                         work={work}
                         key={i}
-                        onClick={ () => this.handleClickWorkTitle(work.idx) }
+                        workIdx={work.idx}
                     />
                 );
             });
@@ -158,11 +108,10 @@ class Works extends React.Component {
                     </GridList>
                 </div>
                 <WorksDetail
-                    isSelected={this.state.selectedKey !== -1}
-                    work={this.state.worksData[this.state.selectedKey]}
-                    onClose={this.handleCloseDetail}
+                    isSelected={this.props.selectedKey !== -1}
+                    work={this.state.worksData[this.props.selectedKey]}
                     onRemove={this.handleRemoveWork}
-                    open={this.state.open}
+                    open={this.props.open}
                     onImageLoaded={this.imageLoaded}
                 />
             </div>
@@ -178,9 +127,12 @@ WorksInfo.defaultProps = {
     selectedType: 'A'
 };
 
+
 let mapStateToProps = state => {
     return {
-        selectedType: state.pageControl.selectedType
+        selectedType: state.pageControl.selectedType,
+        selectedKey: state.pageControl.selectedKey,
+        open: state.pageControl.open
     };
 };
 

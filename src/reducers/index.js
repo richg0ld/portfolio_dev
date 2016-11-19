@@ -1,4 +1,4 @@
-import { SELECT_TYPE, CHANGE_THEME } from '../actions';
+import { SELECT_TYPE, SELECT_WORK, CLOSE_WORK } from '../actions';
 import { combineReducers } from 'redux';
 
 // const counterInitialState = {
@@ -40,21 +40,26 @@ import { combineReducers } from 'redux';
 // export default counterApp;
 
 const AppInitialState={
-    selectedType:'A',
-    themeValue: false
+    selectedType: 'A',
+    open: false,
+    selectedKey: 0
 };
 
 const pageControl = (state = AppInitialState, action) => {
-
+    console.log('reducers',action);
     switch(action.type) {
         case SELECT_TYPE:
             return Object.assign({}, state, {
                 selectedType: action.selectedType
             });
-        case CHANGE_THEME:
-            console.log(state, action);
+        case SELECT_WORK:
             return Object.assign({}, state, {
-                themeValue: !state.themeValue
+                open: action.open,
+                selectedKey: action.selectedKey
+            });
+        case CLOSE_WORK:
+            return Object.assign({}, state, {
+                open: false
             });
         default:
             return state;
