@@ -23,7 +23,7 @@ class WorksInfo extends React.Component {
                 key={this.props.key}
                 title={this.props.work.name}
                 subtitle={<span><b>{this.props.work.startDate+" - "+this.props.work.finishDate}</b></span>}
-                onClick={()=> this.props.onClick(this.props.workIdx)}
+                onClick={()=> this.props.selectWork(this.props.work, this.props.workIdx)}
                 style={{cursor:'pointer'}}
             >
                 <img src={this.props.work.thumbImg || require('./../images/nara.gif')} style={styles.img}/>
@@ -34,7 +34,8 @@ class WorksInfo extends React.Component {
 
 WorksInfo.propTypes = {
     work: React.PropTypes.object,
-    onClick: React.PropTypes.func
+    workIdx: React.PropTypes.number,
+    selectWork: React.PropTypes.func
 };
 
 WorksInfo.defaultProps = {
@@ -44,13 +45,14 @@ WorksInfo.defaultProps = {
         finishDate: 0,
         thumbImg: require('./../images/nara2.png')
     },
-    onClick: () => console.error('Not onClick')
+    workIdx: -1,
+    selectWork: () => console.error('Not working selectWork')
 };
 
 
 let mapDispatchToProps = dispatch => {
     return {
-        onClick: key => dispatch(selectWork(key))
+        selectWork: (work, key) => dispatch(selectWork(work, key))
     }
 };
 

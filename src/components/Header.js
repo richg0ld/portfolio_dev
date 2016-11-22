@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { selectType } from '../actions';
+import { selectType, toggleProfile } from '../actions';
 
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -22,41 +22,20 @@ const styles = {
 };
 
 class Header extends React.Component {
-
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-            profileOpen: false
-        };
-
-        this.toggleProfile = this.toggleProfile.bind(this);
-        this.handleChangeSearch = this.handleChangeSearch.bind(this);
         this.changeSelectType = this.changeSelectType.bind(this);
     }
-
-    toggleProfile(){
-        this.setState({
-            profileOpen: !this.state.profileOpen
-        })
+    changeSelectType(proxy, type){
+        this.props.changeSelectType(type);
     }
-
-    handleChangeSearch(e) {
-        this.setState({
-            keyword:[e.target.value]
-        });
-    }
-
-    changeSelectType(proxy, value){
-        this.props.changeSelectType(value);
-    }
-
     render(){
         return (
             <div style={styles.header}>
                 <AppBar
                     zDepth={5}
                     title={<span style={{cursor:'pointer'}} onClick={ ()=> window.location.reload() }>Richg0ld</span>}
-                    onLeftIconButtonTouchTap={this.toggleProfile}
+                    onLeftIconButtonTouchTap={this.props.toggleProfile}
                     iconElementRight={
                         <IconMenu
                             iconButtonElement={
@@ -74,10 +53,7 @@ class Header extends React.Component {
                         </IconMenu>
                     }
                 />
-
                 <HeaderProfile
-                    open={this.state.profileOpen}
-                    toggleProfile={this.toggleProfile}
                 />
             </div>
         );
@@ -89,12 +65,13 @@ HeaderProfile.propTypes = {
 };
 
 HeaderProfile.defaultProps = {
-    changeSelectType: () => console.error('Not changeSelectType')
+    changeSelectType: () => console.error('Not working changeSelectType')
 };
 
 let mapDispatchToProps = dispatch => {
     return {
-        changeSelectType: type => dispatch(selectType(type))
+        changeSelectType: type => dispatch(selectType(type)),
+        toggleProfile: () => dispatch(toggleProfile())
     }
 };
 

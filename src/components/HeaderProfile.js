@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { toggleProfile } from '../actions';
+
 import Drawer from 'material-ui/Drawer';
 import Avatar from 'material-ui/Avatar';
 
@@ -23,18 +26,13 @@ const styles = {
 };
 
 class HeaderProfile extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render(){
         return (
             <div>
                 <Drawer
                     docked={false}
                     width={300}
-                    open={this.props.open}
+                    open={this.props.profileOpen}
                     onRequestChange={this.props.toggleProfile}
                     style={{overflow:'scroll'}}
                 >
@@ -72,13 +70,27 @@ class HeaderProfile extends React.Component {
 }
 
 HeaderProfile.propTypes = {
-    open: React.PropTypes.bool,
+    profileOpen: React.PropTypes.bool,
     toggleProfile: React.PropTypes.func
 };
 
 HeaderProfile.defaultProps = {
-    work: false,
-    toggleProfile: () => console.error('Not toggleProfile')
+    profileOpen: false,
+    toggleProfile: () => console.error('Not working toggleProfile')
 };
+
+let mapStateToProps = state => {
+    return {
+        profileOpen: state.pageControl.profileOpen
+    }
+};
+
+let mapDispatchToProps = dispatch => {
+    return {
+        toggleProfile: () => dispatch(toggleProfile())
+    }
+};
+
+HeaderProfile = connect(mapStateToProps,mapDispatchToProps)(HeaderProfile);
 
 export default HeaderProfile;

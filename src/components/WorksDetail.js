@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { closeWork } from '../actions';
+import { closeWork, imageLoadingComplete } from '../actions';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -52,7 +52,7 @@ class WorksDetail extends React.Component {
                 actions={actionsButton}
                 modal={false}
                 contentStyle={styles.customContentStyle}
-                open={this.props.open}
+                open={this.props.modalOpen}
                 onRequestClose={this.props.closeWork}
                 autoScrollBodyContent={true}
             >
@@ -64,7 +64,7 @@ class WorksDetail extends React.Component {
                         <img
                             src={this.props.work.img || require('./../images/nara.gif')}
                             style={styles.img}
-                            onLoad={this.props.onImageLoaded}
+                            onLoad={this.props.imageLoadingComplete}
                             onClick={ () => window.open(this.props.work.url) }
                         />
                     </div>
@@ -84,25 +84,43 @@ class WorksDetail extends React.Component {
 
 WorksDetail.propTypes = {
     work: React.PropTypes.object,
-    isSelected: React.PropTypes.bool
+    modalOpen: React.PropTypes.bool,
+    closeWork: React.PropTypes.func,
+    imageLoadingComplete: React.PropTypes.func
 };
 
 WorksDetail.defaultProps = {
     work: {
-        name: '',
-        url: '',
-        startDate:0,
-        finishDate:0
+        desc: "",
+        finishDate: 0,
+        idx: 0,
+        img: require('./../images/nara2.png'),
+        name: "",
+        role: "",
+        startDate: 0,
+        thumbImg: require('./../images/nara2.png'),
+        type: "",
+        url: ""
     },
-    isSelected: false,
+    modalOpen: false,
+    closeWork: () => console.error('Not working closeWork'),
+    imageLoadingComplete: () => console.error('Not working imageLoadingComplete'),
+};
+
+let mapStateToProps = state => {
+    return {
+        work: state.modalControl,
+        modalOpen: state.pageControl.modalOpen
+    }
 };
 
 let mapDispatchToProps = dispatch => {
     return {
-        closeWork: key => dispatch(closeWork())
+        closeWork: () => dispatch(closeWork()),
+        imageLoadingComplete: () => dispatch(imageLoadingComplete())
     }
 };
 
-WorksDetail = connect(null, mapDispatchToProps)(WorksDetail);
+WorksDetail = connect(mapStateToProps, mapDispatchToProps)(WorksDetail);
 
 export default WorksDetail;

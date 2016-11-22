@@ -7,15 +7,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from './Header';
 import Works from './Works';
 
-const styles = {
-    button:{
-        position:'fixed',
-        right: 20,
-        bottom: 20,
-        zIndex:100
-    }
-};
-
 class App extends React.Component {
     render(){
         return (
