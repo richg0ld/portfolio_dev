@@ -13,7 +13,6 @@ const pageControlInitialState={
 const pageControl = (state = pageControlInitialState, action) => {
     switch(action.type) {
         case SELECT_TYPE:
-            console.log(state, action);
             return Object.assign({}, state, {
                 selectedType: action.selectedType
             });

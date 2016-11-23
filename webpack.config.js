@@ -14,16 +14,19 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loaders: ['react-hot', 'babel?' + JSON.stringify({
+                test: /.js$/,
+                loader: 'babel',
+                exclude: /node_modules/,
+                query: {
                     cacheDirectory: true,
                     presets: ['es2015', 'stage-0', 'react']
-                })],
-                exclude: /node_modules/,
-            }, {
+                }
+            },
+            {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('css!sass')
-            }, {
+            },
+            {
                 test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
                 loader: 'file',
                 query: {
@@ -39,7 +42,11 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production')
             }
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false
+            }
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'

@@ -25,14 +25,16 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loaders: ['react-hot', 'babel?' + JSON.stringify({
-                        cacheDirectory: true,
-                        presets: ['es2015', 'stage-0', 'react']
-                    })
-                ],
+                test: /.js$/,
+                loader: 'babel',
                 exclude: /node_modules/,
-            }, {
+                query: {
+                    cacheDirectory: true,
+                    presets: ['es2015', 'stage-0', 'react'],
+                    plugins: ["react-hot-loader/babel"]
+                }
+            },
+            {
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
             }, {

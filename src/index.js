@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -12,7 +13,6 @@ import './style.scss';
 const store = createStore(reducerApp);
 const rootElement = document.getElementById('root');
 
-injectTapEventPlugin();
 
 ReactDOM.render(
     <Provider store={store}>
