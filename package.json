@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config webpack.config.dev.js ",
     "build": "webpack --config webpack.config.js"
   },
-  "author": "",
+  "author": "Jung Hyun Kim <corosk@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -25,7 +25,6 @@
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.10.1",
     "react-addons-update": "^15.3.2",
-    "react-bootstrap": "^0.30.5",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
@@ -38,12 +37,13 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/richg0ld/portfolio.git"
+    "url": "git+https://github.com/richg0ld/portfolio.git",
+    "type": "git"
   },
   "bugs": {
     "url": "https://github.com/richg0ld/portfolio/issues"

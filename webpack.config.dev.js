@@ -37,7 +37,8 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
-            }, {
+            },
+            {
                 test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
                 loader: 'file',
                 query: {
